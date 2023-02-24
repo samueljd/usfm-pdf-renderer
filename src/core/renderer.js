@@ -1,7 +1,7 @@
 import {SofriaRenderFromProskomma} from "proskomma-json-tools";
 import {sofria2WebActions} from './sofria2web'
 import {Proskomma} from "proskomma-core"
-import usfmData from "../data/titus.json"
+import usfmData from "../data/joel.json"
 
 const perf2html = ({data,bookCode}) =>{
   console.log({data,bookCode})
@@ -11,9 +11,11 @@ const perf2html = ({data,bookCode}) =>{
     'usfm', 
     [usfmData.data]
   );
+  console.log({pk})
   const query = `{ documents { id bookCode: header( id: "bookCode") } }`
   const result = pk.gqlQuerySync(query)
-  const docId = result.data.documents.filter(d=> d.bookCode === 'TIT')[0].id
+  console.log({result})
+  const docId = result.data.documents.filter(d=> d.bookCode === 'JOL')[0].id
   
   const renderer = new SofriaRenderFromProskomma({
     proskomma: pk,

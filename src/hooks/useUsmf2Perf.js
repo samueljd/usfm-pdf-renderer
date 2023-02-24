@@ -6,7 +6,7 @@ export const usfm2perf = (usfm) => {
         const pk = new Proskomma();
         console.log({pk})
         pk.importDocuments(
-            {lang: 'eng', abbr: 'tit'}, // doesn't matter...
+            {lang: 'eng', abbr: 'jol'}, // doesn't matter...
             'usfm', 
             [usfm]
         );
