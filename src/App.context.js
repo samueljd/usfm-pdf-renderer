@@ -15,9 +15,11 @@ export function AppContextProvider({
 
   useEffect(() => {
     if (printPreview) {
-      const updatedHtml = document.getElementById("previewDiv").innerHTML;
+      console.log("beforeupdate")
+      const updatedHtml = document.getElementById("previewDiv").innerHTML;      
+      console.log("after update")
       setCurrentHtml(updatedHtml)
-      setHtml(currentHtml)
+      setHtml(updatedHtml)
       setPrintPreview(false)
     }
   }, [printPreview]);
@@ -26,13 +28,6 @@ export function AppContextProvider({
     console.log({printPageSize})
     if (html) {
       const newPage = window.open('', '', '_window');
-
-      // newPage.document.head.innerHTML =
-      //   `<head>
-      //     <meta charset="UTF-8"/>
-      //     <title>PDF Render</title>
-      // </head>`;
-      // // console.log("html rader", newPage.document)
       const script = newPage.document.createElement('script');
       script.src = 'https://unpkg.com/pagedjs/dist/paged.polyfill.js';
       newPage.document.head.appendChild(script);
@@ -61,7 +56,7 @@ export function AppContextProvider({
       newPage.document.body.innerHTML = html
       setHtml(null);
     }
-  }, [html, currentHtml,printPageSize])
+  }, [html, currentHtml ,printPageSize, printPreview])
 
 
 

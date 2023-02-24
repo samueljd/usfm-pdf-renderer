@@ -61,7 +61,6 @@ export default function NavBar() {
 						className='px-4 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800'>
 						Print Preview
 					</button>
-          {/* className='px-4 py-2 text-gray-800 bg-white rounded-md shadow hover:bg-gray-100'> */}
 				</div>
 			</div>
 		</nav>

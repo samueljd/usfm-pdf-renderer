@@ -20,12 +20,10 @@ const Preview = ({ html, pageSize, selectcolumn,pageMargin }) => {
       setCurrentHtml
     }
   } = useContext(AppContext)
-
-	const handleClick = (e) => {
-		console.log('Yo', e.target);
-		console.log(e.target);
-		e.target.classList.add('color-red');
-	};
+  const updatehtml = () =>{
+    const updatedHtml = document.getElementById("previewDiv").innerHTML;    
+    setCurrentHtml(updatedHtml)
+  }
 
 	const sigleColumn = () => {
 		setColumnSetting(css_1_col_ltr)
@@ -82,18 +80,16 @@ const Preview = ({ html, pageSize, selectcolumn,pageMargin }) => {
 	return (
 		<>
 			<div className='container mx-auto mt-12'>
-				<div className='grid grid-cols-1 gap-6 mb-6 lg:grid-cols-3'>
 					<div className='px-4 py-5'>
 							{currentHtml && (
 								<div id='previewDiv' contentEditable="true" className={`${pageSize.value} flex space-x-4 `}
-									onClick={(e) => handleClick(e)}
+                // onInput={updatehtml}
 									dangerouslySetInnerHTML={{
 										__html: currentHtml,
 									}}
 								/>
 							)}
 					</div>
-				</div>
 			</div>
 		</>
 	);
