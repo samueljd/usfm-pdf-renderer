@@ -11,6 +11,7 @@ export function AppContextProvider({
   const [html, setHtml] = useState(null);
   const [htmlString, setHtmlString] = useState(null);
   const [currentHtml, setCurrentHtml] = useState();
+  const [printPageSize,setPrintPageSize] = useState('A4')
 
   useEffect(() => {
     if (printPreview) {
@@ -22,6 +23,7 @@ export function AppContextProvider({
   }, [printPreview]);
 
   useEffect(() => {
+    console.log({printPageSize})
     if (html) {
       const newPage = window.open('', '', '_window');
 
@@ -40,6 +42,9 @@ export function AppContextProvider({
         margin: 1em;
         background: grey;
       }
+      @page {
+        size: ${printPageSize.cssVal};
+      }
       .pagedjs_pages {
       }
       .pagedjs_page {
@@ -56,7 +61,7 @@ export function AppContextProvider({
       newPage.document.body.innerHTML = html
       setHtml(null);
     }
-  }, [html, currentHtml])
+  }, [html, currentHtml,printPageSize])
 
 
 
@@ -70,7 +75,8 @@ export function AppContextProvider({
     actions: {
       setHtmlString,
       setPrintPreview,
-      setCurrentHtml
+      setCurrentHtml,
+      setPrintPageSize
     },
   };
 

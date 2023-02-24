@@ -1,21 +1,30 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState, useContext } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
+import { AppContext } from '../../App.context';
 
 const pages = [
-	{ name: 'A5', value: 'A5' },
-	{ name: 'A5 Landscape', value: 'A5Landscape' },
-	{ name: 'A4', value: 'A4' },
-	{ name: 'A4 Landscape', value: 'A4Landscape' },
-	{ name: 'A3', value: 'A3' },
-	{ name: 'A3 Landscape', value: 'A3Landscape' },
+	{ name: 'A5', value: 'A5', cssVal: 'A5' },
+	{ name: 'A5 Landscape', value: 'A5Landscape',cssVal: 'A5 landscape' },
+	{ name: 'A4', value: 'A4',cssVal: 'A4' },
+	{ name: 'A4 Landscape', value: 'A4Landscape',cssVal: 'A4 landscape' },
+	{ name: 'A3', value: 'A3',cssVal: 'A3' },
+	{ name: 'A3 Landscape', value: 'A3Landscape',cssVal: 'A3 landscape' },
 ];
 
 export default function PageMenu({ setPagesize }) {
 	const [selected, setSelected] = useState(pages[2]);
+
+  const {
+    actions: {
+      setPrintPageSize,
+    }
+  } = useContext(AppContext)
+  
 	useEffect(() => {
 		if (selected) {
 			setPagesize(selected);
+      setPrintPageSize(selected);
 		}
 	}, [selected]);
 	return (
