@@ -1,7 +1,7 @@
 const css_1_col_ltr = `<style >
 body {
-    margin: 1rem;
-    padding: 1rem;
+    margin: 0;
+    padding: 0;
 }
 p {
     font-size: 100%;

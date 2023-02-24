@@ -46,7 +46,7 @@ const Preview = ({ html, pageSize, selectcolumn,pageMargin }) => {
         <meta name="description" content="">
       </head>
       <body class="body">
-      <div id="paper" class="newspaper page ${pageSize.value}">`;
+      <div id="paper" class="newspaper page ${pageSize.value}" >`;
 			inlineData += html;
 			inlineData += '</div></body></html>';
 			setCurrentHtml(inlineData);
@@ -71,14 +71,10 @@ const Preview = ({ html, pageSize, selectcolumn,pageMargin }) => {
 	}, [selectcolumn]);
 
 	useEffect(()=>{
-		// const _style = document.getElementById('paper');
-		// console.log(currentHtml, 'id')
 		if(pageMargin && currentHtml){
 			const _style = document.getElementById('paper');
 			console.log(_style)
 			_style.style.padding=`${pageMargin}px`;
-			// _style.classList?.add(`padding:${pageMargin}`);
-			// console.log(_style.classList?.add(`padding:${pageMargin}`), 'style')
 		}
 	},[pageMargin])
 	// console.log(selectcolumn,html);
